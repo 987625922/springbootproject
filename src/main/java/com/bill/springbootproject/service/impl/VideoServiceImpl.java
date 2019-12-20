@@ -33,4 +33,11 @@ public class VideoServiceImpl implements VideoService {
     public int delect(long id) {
         return videoMapper.delect(id);
     }
+
+    @Override
+    public long insert(Video video) {
+        videoMapper.save(video);
+        System.out.println("video的id" + video.getId());
+        return video.getId();
+    }
 }

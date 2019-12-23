@@ -15,7 +15,7 @@ public class User implements Serializable {
   private String sign;
   private long sex;
   private String city;
-  private java.sql.Timestamp createTime;
+  private java.util.Date createTime;
 
 
   public Long getId() {
@@ -90,11 +90,11 @@ public class User implements Serializable {
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public java.util.Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(java.util.Date createTime) {
     this.createTime = createTime;
   }
 

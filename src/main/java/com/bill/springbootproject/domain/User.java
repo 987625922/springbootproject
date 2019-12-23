@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
-  private long id;
+  private Long id;
   private String openid;
   private String name;
   private String headImg;
@@ -18,7 +18,7 @@ public class User implements Serializable {
   private java.sql.Timestamp createTime;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 

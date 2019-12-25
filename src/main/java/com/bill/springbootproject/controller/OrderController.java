@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_3
  */
 @RestController
-@RequestMapping("/user/api/order")
+@RequestMapping("/api/order")
 public class OrderController {
 
     @Autowired
@@ -36,7 +36,8 @@ public class OrderController {
         videoOrderDto.setVideoId(videoId);
         videoOrderDto.setIp(ip);
 
-        videoOrderService.save(videoOrderDto);
+        String codeUrl = videoOrderService.save(videoOrderDto);
+        //生成二维码
 
         return JsonData.buildSuccess("下单成功");
     }

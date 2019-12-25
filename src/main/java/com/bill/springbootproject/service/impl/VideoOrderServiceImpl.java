@@ -37,13 +37,12 @@ public class VideoOrderServiceImpl implements VideoOrderService {
     private UserMapper userMapper;
 
     @Override
-    public VideoOrder save(VideoOrderDto videoOrderDto) throws Exception {
+    public String save(VideoOrderDto videoOrderDto) throws Exception {
         //查找视频信息
         Video video =  videoMapper.findById(videoOrderDto.getVideoId());
 
         //查找用户信息
         User user = userMapper.findByid(videoOrderDto.getUserId());
-
 
         //生成订单
         VideoOrder videoOrder = new VideoOrder();
@@ -56,24 +55,16 @@ public class VideoOrderServiceImpl implements VideoOrderService {
         videoOrder.setUserId(user.getId());
         videoOrder.setHeadImg(user.getHeadImg());
         videoOrder.setNickname(user.getName());
-
         videoOrder.setDel(0);
         videoOrder.setIp(videoOrderDto.getIp());
         videoOrder.setOutTradeNo(CommonUtils.generateUUID());
 
         videoOrderMapper.insert(videoOrder);
 
-        unifiedOrder(videoOrder);
-
         //获取codeurl
+        String codeUrl = unifiedOrder(videoOrder);
 
-
-        //生成二维码
-
-
-
-
-        return null;
+        return codeUrl;
     }
 
 

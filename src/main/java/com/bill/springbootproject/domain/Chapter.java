@@ -4,31 +4,31 @@ package com.bill.springbootproject.domain;
 import java.io.Serializable;
 
 /**
- * 视频章实体类
+ * 章实体类
  */
 public class Chapter implements Serializable {
 
-  private long id;
-  private long videoId;
+  private Integer id;
+  private Integer videoId;
   private String title;
-  private long ordered;
-  private java.sql.Timestamp createTime;
+  private Integer ordered;
+  private java.util.Date createTime;
 
 
-  public long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public long getVideoId() {
+  public Integer getVideoId() {
     return videoId;
   }
 
-  public void setVideoId(long videoId) {
+  public void setVideoId(Integer videoId) {
     this.videoId = videoId;
   }
 
@@ -42,20 +42,20 @@ public class Chapter implements Serializable {
   }
 
 
-  public long getOrdered() {
+  public Integer getOrdered() {
     return ordered;
   }
 
-  public void setOrdered(long ordered) {
+  public void setOrdered(Integer ordered) {
     this.ordered = ordered;
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public java.util.Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(java.util.Date createTime) {
     this.createTime = createTime;
   }
 

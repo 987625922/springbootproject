@@ -44,6 +44,25 @@ public class WeChatConfig {
     @Value("${wxopen.redirect_url}")
     private String openRedirectUrl;
 
+    /**
+     * 商户号id
+     */
+    @Value("${wxpay.mer_id}")
+    private String mchId;
+
+
+    /**
+     * 支付key
+     */
+    @Value("${wxpay.key}")
+    private String key;
+
+    /**
+     * 微信支付回调url
+     */
+    @Value("${wxpay.callback}")
+    private String payCallbackUrl;
+
 
     /**
      * 微信开放平台二维码连接
@@ -60,6 +79,10 @@ public class WeChatConfig {
      */
     private final static String OPEN_USER_INFO_URL = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN";
 
+    /**
+     * 统一下单url
+     */
+    private static final String UNIFIED_ORDER_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 
     public static String getOpenQrcodeUrl() {
         return OPEN_QRCODE_URL;
@@ -72,4 +95,9 @@ public class WeChatConfig {
     public static String getOpenUserInfoUrl() {
         return OPEN_USER_INFO_URL;
     }
+
+    public static String getUnifiedOrderUrl() {
+        return UNIFIED_ORDER_URL;
+    }
+
 }

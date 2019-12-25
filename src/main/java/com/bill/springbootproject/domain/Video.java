@@ -8,22 +8,22 @@ import java.io.Serializable;
  */
 public class Video implements Serializable {
 
-  private Long id;
+  private Integer id;
   private String title;
   private String summary;
   private String coverImg;
-  private Long viewNum;
-  private Double price;
-  private java.sql.Timestamp createTime;
-  private Long online;
+  private Integer viewNum;
+  private Integer price;
+  private java.util.Date createTime;
+  private Integer online;
   private Double point;
 
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -55,38 +55,38 @@ public class Video implements Serializable {
   }
 
 
-  public Long getViewNum() {
+  public Integer getViewNum() {
     return viewNum;
   }
 
-  public void setViewNum(Long viewNum) {
+  public void setViewNum(Integer viewNum) {
     this.viewNum = viewNum;
   }
 
 
-  public Double getPrice() {
+  public Integer getPrice() {
     return price;
   }
 
-  public void setPrice(Double price) {
+  public void setPrice(Integer price) {
     this.price = price;
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public java.util.Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(java.util.Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public Long getOnline() {
+  public Integer getOnline() {
     return online;
   }
 
-  public void setOnline(Long online) {
+  public void setOnline(Integer online) {
     this.online = online;
   }
 

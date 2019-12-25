@@ -8,23 +8,23 @@ import java.io.Serializable;
  */
 public class Comment implements Serializable {
 
-  private long id;
+  private Integer id;
   private String content;
-  private long userId;
+  private Integer userId;
   private String headImg;
   private String name;
   private double point;
-  private long up;
-  private java.sql.Timestamp createTime;
-  private long orderId;
-  private long videoId;
+  private Integer up;
+  private java.util.Date createTime;
+  private Integer orderId;
+  private Integer videoId;
 
 
-  public long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -38,11 +38,11 @@ public class Comment implements Serializable {
   }
 
 
-  public long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
@@ -74,38 +74,38 @@ public class Comment implements Serializable {
   }
 
 
-  public long getUp() {
+  public Integer getUp() {
     return up;
   }
 
-  public void setUp(long up) {
+  public void setUp(Integer up) {
     this.up = up;
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public java.util.Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(java.util.Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public long getOrderId() {
+  public Integer getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(long orderId) {
+  public void setOrderId(Integer orderId) {
     this.orderId = orderId;
   }
 
 
-  public long getVideoId() {
+  public Integer getVideoId() {
     return videoId;
   }
 
-  public void setVideoId(long videoId) {
+  public void setVideoId(Integer videoId) {
     this.videoId = videoId;
   }
 

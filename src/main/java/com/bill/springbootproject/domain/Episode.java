@@ -4,26 +4,26 @@ package com.bill.springbootproject.domain;
 import java.io.Serializable;
 
 /**
- * 视频集实体类
+ * 集实体类
  */
-public class Episode implements Serializable {
+public class Episode  implements Serializable {
 
-  private long id;
+  private Integer id;
   private String title;
-  private long num;
+  private Integer num;
   private String duration;
   private String coverImg;
-  private long videoId;
+  private Integer videoId;
   private String summary;
-  private java.sql.Timestamp createTime;
-  private long chapterId;
+  private java.util.Date createTime;
+  private Integer chapterId;
 
 
-  public long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -37,11 +37,11 @@ public class Episode implements Serializable {
   }
 
 
-  public long getNum() {
+  public Integer getNum() {
     return num;
   }
 
-  public void setNum(long num) {
+  public void setNum(Integer num) {
     this.num = num;
   }
 
@@ -64,11 +64,11 @@ public class Episode implements Serializable {
   }
 
 
-  public long getVideoId() {
+  public Integer getVideoId() {
     return videoId;
   }
 
-  public void setVideoId(long videoId) {
+  public void setVideoId(Integer videoId) {
     this.videoId = videoId;
   }
 
@@ -82,20 +82,20 @@ public class Episode implements Serializable {
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public java.util.Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(java.util.Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public long getChapterId() {
+  public Integer getChapterId() {
     return chapterId;
   }
 
-  public void setChapterId(long chapterId) {
+  public void setChapterId(Integer chapterId) {
     this.chapterId = chapterId;
   }
 

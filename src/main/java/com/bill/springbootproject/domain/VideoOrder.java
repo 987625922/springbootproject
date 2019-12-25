@@ -1,35 +1,42 @@
 package com.bill.springbootproject.domain;
 
+
 import java.io.Serializable;
 
 /**
- *
  * 订单表
  */
 public class VideoOrder implements Serializable {
 
-  private long id;
+  private Integer id;
   private String openid;
+
   private String outTradeNo;
-  private long state;
-  private java.sql.Timestamp createTime;
-  private java.sql.Timestamp notifyTime;
-  private long totalFee;
+  /**
+   * 0表示未支付，1表示已经支付
+   */
+  private Integer state;
+  private java.util.Date createTime;
+  private java.util.Date notifyTime;
+  /**
+   *分为单位
+   */
+  private Integer totalFee;
   private String nickname;
   private String headImg;
-  private long videoId;
+  private Integer videoId;
   private String videoTitle;
   private String videoImg;
-  private long userId;
+  private Integer userId;
   private String ip;
-  private long del;
+  private Integer del;
 
 
-  public long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -52,38 +59,38 @@ public class VideoOrder implements Serializable {
   }
 
 
-  public long getState() {
+  public Integer getState() {
     return state;
   }
 
-  public void setState(long state) {
+  public void setState(Integer state) {
     this.state = state;
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public java.util.Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(java.util.Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public java.sql.Timestamp getNotifyTime() {
+  public java.util.Date getNotifyTime() {
     return notifyTime;
   }
 
-  public void setNotifyTime(java.sql.Timestamp notifyTime) {
+  public void setNotifyTime(java.util.Date notifyTime) {
     this.notifyTime = notifyTime;
   }
 
 
-  public long getTotalFee() {
+  public Integer getTotalFee() {
     return totalFee;
   }
 
-  public void setTotalFee(long totalFee) {
+  public void setTotalFee(Integer totalFee) {
     this.totalFee = totalFee;
   }
 
@@ -106,11 +113,11 @@ public class VideoOrder implements Serializable {
   }
 
 
-  public long getVideoId() {
+  public Integer getVideoId() {
     return videoId;
   }
 
-  public void setVideoId(long videoId) {
+  public void setVideoId(Integer videoId) {
     this.videoId = videoId;
   }
 
@@ -133,11 +140,11 @@ public class VideoOrder implements Serializable {
   }
 
 
-  public long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
@@ -151,11 +158,11 @@ public class VideoOrder implements Serializable {
   }
 
 
-  public long getDel() {
+  public Integer getDel() {
     return del;
   }
 
-  public void setDel(long del) {
+  public void setDel(Integer del) {
     this.del = del;
   }
 

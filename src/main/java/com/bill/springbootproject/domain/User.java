@@ -2,27 +2,28 @@ package com.bill.springbootproject.domain;
 
 
 import java.io.Serializable;
+
 /**
  * 用户实体类
  */
 public class User implements Serializable {
 
-  private Long id;
+  private Integer id;
   private String openid;
   private String name;
   private String headImg;
   private String phone;
   private String sign;
-  private long sex;
+  private Integer sex;
   private String city;
   private java.util.Date createTime;
 
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -72,11 +73,11 @@ public class User implements Serializable {
   }
 
 
-  public long getSex() {
+  public Integer getSex() {
     return sex;
   }
 
-  public void setSex(long sex) {
+  public void setSex(Integer sex) {
     this.sex = sex;
   }
 

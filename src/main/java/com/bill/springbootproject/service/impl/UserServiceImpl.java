@@ -23,10 +23,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 保存微信登录之后的用户信息
+     *
+     * @param code
+     * @return
+     */
     @Override
     public User saveWeChatUser(String code) {
 
-        String accessTokenUrl = String.format(WeChatConfig.getOpenAccessTokenUrl(), weChatConfig.getOpenAppid(), weChatConfig.getOpenAppsecret(), code);
+        String accessTokenUrl = String.format(WeChatConfig.getOpenAccessTokenUrl(),
+                weChatConfig.getOpenAppid(), weChatConfig.getOpenAppsecret(), code);
 
         //获取access_token
         Map<String, Object> baseMap = HttpUtils.doGet(accessTokenUrl);
@@ -43,9 +50,8 @@ public class UserServiceImpl implements UserService {
             return dbUser;
         }
 
-        //获取用户基本信息
+        //根据access_token，获取用户基本信息
         String userInfoUrl = String.format(WeChatConfig.getOpenUserInfoUrl(), accessToken, openId);
-        //获取access_token
         Map<String, Object> baseUserMap = HttpUtils.doGet(userInfoUrl);
 
         if (baseUserMap == null || baseUserMap.isEmpty()) {
@@ -59,12 +65,15 @@ public class UserServiceImpl implements UserService {
         String city = (String) baseUserMap.get("city");
         String country = (String) baseUserMap.get("country");
         String headimgurl = (String) baseUserMap.get("headimgurl");
-        StringBuilder sb = new StringBuilder(country).append("||").append(province).append("||").append(city);
+        StringBuilder sb = new StringBuilder(country).append("||").append(province).append("||")
+                .append(city);
         String finalAddress = sb.toString();
         try {
             //解决乱码
-            nickname = new String(nickname.getBytes("ISO-8859-1"), "UTF-8");
-            finalAddress = new String(finalAddress.getBytes("ISO-8859-1"), "UTF-8");
+            nickname = new String(nickname.getBytes("ISO-8859-1"),
+                    "UTF-8");
+            finalAddress = new String(finalAddress.getBytes("ISO-8859-1"),
+                    "UTF-8");
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

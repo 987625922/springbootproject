@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 订单接口
+ * 微信支付文档
+ * https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_3
  */
 @RestController
-@RequestMapping("/user/api/v1/order")
+@RequestMapping("/user/api/order")
 public class OrderController {
 
 

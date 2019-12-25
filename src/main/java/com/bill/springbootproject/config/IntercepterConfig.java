@@ -7,10 +7,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 拦截器配置
+ * 添加需要使用的拦截器
  */
 @Configuration
 public class IntercepterConfig implements WebMvcConfigurer {
 
+    /**
+     * 拦截未登录的用户
+     *
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 

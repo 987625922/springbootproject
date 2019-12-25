@@ -7,6 +7,12 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.Date;
 
+
+/**
+ * jwt的token生成和校验工具
+ * 用于给客户标识身份，需要前端用代码自己带上（存在header或者param中），
+ * 不同于cookie和session存在于浏览器中
+ */
 public class JwtUtils {
     //发起人
     public static final String SUBJECT = "SUBJECT";

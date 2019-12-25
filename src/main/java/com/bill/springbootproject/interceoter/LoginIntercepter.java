@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 登录拦截器
+ * 拦截没有再header和param中带上token或者token失效和错误的请求
+ */
 public class LoginIntercepter implements HandlerInterceptor {
 
 

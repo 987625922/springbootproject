@@ -136,6 +136,28 @@ public class WXPayUtil {
         return weixinPaySign.equals(sign);
     }
 
+    /**
+     * 获取有序map
+     * @param map
+     * @return
+     */
+    public static SortedMap<String,String> getSortedMap(Map<String,String> map){
+
+        SortedMap<String, String> sortedMap = new TreeMap<>();
+        Iterator<String> it =  map.keySet().iterator();
+        while (it.hasNext()){
+            String key  = (String)it.next();
+            String value = map.get(key);
+            String temp = "";
+            if( null != value){
+                temp = value.trim();
+            }
+            sortedMap.put(key,temp);
+        }
+        return sortedMap;
+    }
+
+
 
 
 

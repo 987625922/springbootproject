@@ -12,40 +12,43 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * 用户表操作的service
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
-
+    //微信配置
     @Autowired
     private WeChatConfig weChatConfig;
 
-
+    //用户数据表操作mapper
     @Autowired
     private UserMapper userMapper;
 
     /**
-     * 保存微信登录之后的用户信息
+     * 获取用户信息
+     * 获取到openid，查看数据库用户是否注册，注册之后返回用户实体
      *
-     * @param code
-     * @return
+     * @param code 微信登录授权临时票据
+     * @return 返回用户信息实体类
      */
     @Override
     public User saveWeChatUser(String code) {
-
+        //通过code拼接获取access_token的链接
         String accessTokenUrl = String.format(WeChatConfig.getOpenAccessTokenUrl(),
                 weChatConfig.getOpenAppid(), weChatConfig.getOpenAppsecret(), code);
-
         //获取access_token
         Map<String, Object> baseMap = HttpUtils.doGet(accessTokenUrl);
 
         if (baseMap == null || baseMap.isEmpty()) {
             return null;
         }
+
         String accessToken = (String) baseMap.get("access_token");
         String openId = (String) baseMap.get("openid");
-
+        //通过openId查看用户是否注册
         User dbUser = userMapper.findByopenid(openId);
-
         if (dbUser != null) { //更新用户，直接返回
             return dbUser;
         }
@@ -57,8 +60,8 @@ public class UserServiceImpl implements UserService {
         if (baseUserMap == null || baseUserMap.isEmpty()) {
             return null;
         }
+        //获取用户信息并插入数据库
         String nickname = (String) baseUserMap.get("nickname");
-
         Double sexTemp = (Double) baseUserMap.get("sex");
         int sex = sexTemp.intValue();
         String province = (String) baseUserMap.get("province");

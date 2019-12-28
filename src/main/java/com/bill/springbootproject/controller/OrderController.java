@@ -1,6 +1,5 @@
 package com.bill.springbootproject.controller;
 
-import com.bill.springbootproject.domain.JsonData;
 import com.bill.springbootproject.dto.VideoOrderDto;
 import com.bill.springbootproject.service.VideoOrderService;
 import com.google.zxing.BarcodeFormat;
@@ -21,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 订单接口
+ * 下单接口
  * 微信支付文档
  * https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_3
  */
@@ -32,20 +31,34 @@ public class OrderController {
     @Autowired
     private VideoOrderService videoOrderService;
 
-    @GetMapping("add")
-    public JsonData saveOrder(@RequestParam(value = "video_id", required = true) int videoId,
-                              HttpServletResponse response) throws Exception {
-        String ip = "120.25.1.43";
+    /**
+     * 添加视频购买订单并返回微信二维码
+     *
+     * @param videoId  视频id
+     * @param response
+     * @return
+     * @throws Exception =====
+     *                   微信支付说明文档
+     *                   https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=6_1
+     */
+    @GetMapping("buy")
+    public void saveOrder(@RequestParam(value = "video_id", required = true) int videoId,
+                          HttpServletResponse response) throws Exception {
 //        String ip = IpUtils.getIpAddr(request);
         //int userId = request.getAttribute("user_id");
         int userId = 1;
+        String ip = "120.25.1.43";
+
         VideoOrderDto videoOrderDto = new VideoOrderDto();
         videoOrderDto.setUserId(userId);
         videoOrderDto.setVideoId(videoId);
         videoOrderDto.setIp(ip);
 
         String codeUrl = videoOrderService.save(videoOrderDto);
-        //生成二维码
+        if (codeUrl == null) {
+            throw new NullPointerException();
+        }
+
         try {
             //生成二维码配置
             Map<EncodeHintType, Object> hints = new HashMap<>();
@@ -63,7 +76,6 @@ public class OrderController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return JsonData.buildSuccess("下单成功");
     }
 
 

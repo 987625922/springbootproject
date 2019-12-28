@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ *
+ * 视频表的操作service
+ *
+ */
 @Service
 public class VideoServiceImpl implements VideoService {
 

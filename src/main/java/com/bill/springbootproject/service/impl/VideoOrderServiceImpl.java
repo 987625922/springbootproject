@@ -16,6 +16,8 @@ import com.bill.springbootproject.utils.WXPayUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.Map;
@@ -52,6 +54,7 @@ public class VideoOrderServiceImpl implements VideoOrderService {
      * @throws Exception
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public String save(VideoOrderDto videoOrderDto) throws Exception {
         //查找视频信息
         Video video = videoMapper.findById(videoOrderDto.getVideoId());
@@ -128,4 +131,29 @@ public class VideoOrderServiceImpl implements VideoOrderService {
 
         return "";
     }
+
+    /**
+     * 根据流水号查找订单
+     *
+     * @param outTradeNo
+     * @return
+     */
+    @Override
+    public VideoOrder findByOutTradeNo(String outTradeNo) {
+
+        return videoOrderMapper.findByOutTradeNo(outTradeNo);
+    }
+
+    /**
+     * 根据流水号更新订单
+     *
+     * @param videoOrder
+     * @return
+     */
+    @Override
+    public int updateVideoOderByOutTradeNo(VideoOrder videoOrder) {
+        return videoOrderMapper.updateVideoOderByOutTradeNo(videoOrder);
+    }
+
+
 }

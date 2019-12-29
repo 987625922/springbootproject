@@ -38,7 +38,7 @@ public interface VideoOrderMapper {
 
 
     /**
-     * 根据交易订单号获取订单对象
+     * 根据订单流水号获取订单对象
      *
      * @param outTradeNo
      * @return

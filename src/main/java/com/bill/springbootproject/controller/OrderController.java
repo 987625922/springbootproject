@@ -2,6 +2,7 @@ package com.bill.springbootproject.controller;
 
 import com.bill.springbootproject.dto.VideoOrderDto;
 import com.bill.springbootproject.service.VideoOrderService;
+import com.bill.springbootproject.utils.IpUtils;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -25,7 +27,7 @@ import java.util.Map;
  * https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_3
  */
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/user/api/order")
 public class OrderController {
 
     @Autowired
@@ -42,12 +44,12 @@ public class OrderController {
      *                   https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=6_1
      */
     @GetMapping("buy")
-    public void saveOrder(@RequestParam(value = "video_id", required = true) int videoId,
+    public void saveOrder(@RequestParam(value = "video_id", required = true) int videoId, HttpServletRequest request,
                           HttpServletResponse response) throws Exception {
-//        String ip = IpUtils.getIpAddr(request);
-        //int userId = request.getAttribute("user_id");
-        int userId = 1;
-        String ip = "120.25.1.43";
+        String ip = IpUtils.getIpAddr(request);
+        int userId = (Integer) request.getAttribute("user_id");
+//        int userId = 1;
+//        String ip = "120.25.1.43";
 
         VideoOrderDto videoOrderDto = new VideoOrderDto();
         videoOrderDto.setUserId(userId);

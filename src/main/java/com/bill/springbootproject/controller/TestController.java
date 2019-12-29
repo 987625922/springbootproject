@@ -19,6 +19,7 @@ public class TestController {
 
     @RequestMapping("test1")
     public String test1() {
+        int i = 1/0;
         return weChatConfig.getAppId() + "  " + weChatConfig.getAppsecret();
     }
 

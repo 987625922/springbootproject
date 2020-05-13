@@ -29,6 +29,7 @@ import java.util.SortedMap;
  * 微信扫码登录和登录成功后从微信服务器回调到我们接口的controller
  * 回调到code -》 get请求获取 -》 access_token -》 get请求 -》 获取到用户信息
  * https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
+ * https://developers.weixin.qq.com/doc/oplatform/Mobile_App/WeChat_Login/Login_via_Scan.html
  */
 @Controller
 @RequestMapping("/api/wechat")

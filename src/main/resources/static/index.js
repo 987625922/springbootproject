@@ -1,5 +1,5 @@
 
-var host = "http://127.0.0.1:8080"
+var host = "http://172.17.0.16:8080"
 var global_login_url = ""  //全局扫描登录
 
 //下单
